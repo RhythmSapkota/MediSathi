@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Downloader</title>
+</head>
+<body>
+    <h1>Media Downloader</h1>
+    <form id="downloadForm">
+        <label for="mediaUrl">Enter Media URL:</label>
+        <input type="text" id="mediaUrl" name="mediaUrl" required>
+        <button type="submit">Download</button>
+    </form>
+
+    <div id="downloadStatus"></div>
+
+    <script>
+        const downloadForm = document.getElementById('downloadForm');
+        const downloadStatus = document.getElementById('downloadStatus');
+
+        downloadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const mediaUrl = document.getElementById('mediaUrl').value;
+
+            try {
+                const a = document.createElement('a');
+                a.href = mediaUrl;
+                a.download = 'downloaded_media';
+                a.target = '_blank';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                downloadStatus.innerText = 'Download started. Check your downloads folder.';
+            } catch (error) {
+                downloadStatus.innerText = `Download failed: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
+<iframe width="1271" height="715" src="https://www.youtube.com/embed/_bo-aOOL1LU?list=PLZt7UtECcYUVaAxg1ksNI3OA3T1KHkLAK" title="Metro Boomin - &quot;Blue Pill&quot; feat. Travis Scott [Official Audio]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

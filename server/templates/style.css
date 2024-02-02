@@ -1,0 +1,74 @@
+/* Reset some default browser styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.hospital-info {
+    text-align: left;
+}
+
+.hospital-info h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.doctor-info {
+    text-align: right;
+}
+
+.doctor-info p {
+    margin: 5px 0;
+}
+
+/* Separator line */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+/* Patient info styles */
+.patient-info {
+    margin: 20px;
+}
+
+/* Table styles */
+.issue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+.issue-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.issue-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Details and Medicines styles */
+.details, .medicines {
+    margin: 20px;
+}
+
+/* Page size and margins for printing */
+@media print {
+    body {
+        margin: 0.5in;
+    }
+}
+
+/* Add more custom styles as needed */
