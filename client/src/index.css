@@ -207,8 +207,19 @@ ul {
 .btn-block {
   width: 100%;
 }
+/* .disabled{
+  background-color:grey;
+  }
+  .disabled:hover{
+    cursor: not-allowed;
+  } */
 button:disabled {
-  cursor: wait;
+  background-color:grey;
+  cursor: not-allowed;
+}
+button:disabled:hover {
+  background-color:grey;
+  cursor: not-allowed;
 }
 .danger-btn {
   color: var(--red-dark);
@@ -538,9 +549,9 @@ ul {
 .btn-block {
   width: 100%;
 }
-button:disabled {
+/* button:disabled {
   cursor: wait;
-}
+} */
 .danger-btn {
   color: var(--red-dark);
   background: var(--red-light);

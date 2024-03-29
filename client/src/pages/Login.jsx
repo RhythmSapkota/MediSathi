@@ -49,6 +49,7 @@ const Login = () => {
         {errors?.msg && <p style={{color:'red'}}>{errors.msg}</p>}
         <FormRow type = "email" name="email" labelText="Email"/>
         <FormRow type = "password" name="password" labelText={"Password"} />
+        <Link to={"/forgot-password"} className="member-btn">Forgot password?</Link>
         <button type='submit' className='btn btn-block' disabled={isSubbmitting}>{isSubbmitting? 'Logging In...' : "Login" }</button>
         <button type="button" className='btn btn-block' >Explore as Guest</button>
         <p>Not a member yet?<Link to={"/register"} className="member-btn">Register Instead</Link>

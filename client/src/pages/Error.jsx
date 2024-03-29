@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useRouteError } from 'react-router-dom'
 import Wrapper from '../assets/wrappers/ErrorPage'
 import img from '../assets/images/not-found.svg'
@@ -31,6 +30,18 @@ console.log(error)
          </div>
        </Wrapper>
      } 
+
+     if (error?.response.status === 401){
+ 
+      return   <Wrapper>
+           <div>
+             <img src={forbidden} alt = "UnAuthorized"/>
+             {/* <h3>Unauthorized!!</h3>
+             <p>You are not Authorized to access this page </p> */}
+             <Link to='/dashboard'>Back Home</Link>
+           </div>
+         </Wrapper>
+       } 
   return (
     <Wrapper>
      <div>

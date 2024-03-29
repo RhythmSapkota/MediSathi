@@ -19,6 +19,8 @@ const UserSchema = new mongoose.Schema({
     enum: Object.values(USER_ROLE),
     default: USER_ROLE.USER,
   },
+  resetPasswordToken: String, 
+  resetPasswordExpires: Date,
 });
 
 UserSchema.methods.toJSON = function(){

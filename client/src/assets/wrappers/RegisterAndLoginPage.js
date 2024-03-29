@@ -27,11 +27,13 @@ const Wrapper = styled.section`
   }
   .btn {
     margin-top: 1rem;
+    }
   }
   .member-btn {
     color: var(--primary-500);
     letter-spacing: var(--letter-spacing);
     margin-left: 0.25rem;
   }
+ 
 `;
 export default Wrapper;

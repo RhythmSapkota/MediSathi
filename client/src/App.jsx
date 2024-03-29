@@ -21,6 +21,9 @@ import {
 } from "./pages";
 import { checkDefaultTheme } from "./utils/DefaultTheme";
 
+import { loader as resetLoader } from "./pages/resetPassword";
+import { action as resetAction } from "./pages/resetPassword";
+import { action as forgotPasswordAction } from "./pages/forgotPassword";
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
@@ -32,6 +35,8 @@ import { loader as myBookingsLoader } from "./pages/MyBookings";
 import { loader as doctorDailySessionLoader } from "./pages/DoctorDailySession";
 import {loader as manageUsersLoader} from "./pages/ManageUsers";
 import {loader as manageHospitalsLoader} from "./pages/ManageHospitals"
+import ResetPasswordForm from "./pages/resetPassword";
+import ForgotPassword from "./pages/forgotPassword";
 
 
 
@@ -46,6 +51,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+        action: forgotPasswordAction,
+      },
+      {
+        path: "/reset-password/:token",
+        element: <ResetPasswordForm />,
+        action: resetAction,
+        loader: resetLoader
       },
       {
         path: "register",
