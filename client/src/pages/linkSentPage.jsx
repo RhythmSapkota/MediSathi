@@ -40,7 +40,8 @@ const SentPage = ({ email }) => {
       'tutanota.com': 'https://mail.tutanota.com',
       'hushmail.com': 'https://www.hushmail.com',
       'rocketmail.com': 'https://mail.yahoo.com',
-      'bluemail.me': 'https://bluemail.me'
+      'bluemail.me': 'https://bluemail.me',
+      "yopmail.com":"https://yopmail.com"
     };
 
     if (emailDomain in emailDomains) {

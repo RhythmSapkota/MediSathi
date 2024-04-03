@@ -1,0 +1,54 @@
+<!-- server/templates/appointment-template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointment Details</title>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include custom styles -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="hospital-info">
+            <img src="https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg" alt="Hospital Logo" height="200px" width="300px">
+            <h2>{{hospitalName}}</h2>
+            <p>{{hospitalLocation}}</p>
+            <p>{{hospitalType}}</p>
+        </div>
+        <div class="doctor-info">
+            <p><strong>Doctor's Name:</strong> {{doctorName}}</p>
+            <p><strong>Doctor's Email:</strong> {{doctorEmail}}</p>
+            <p><strong>Specialty:</strong> {{doctorSpecialty}}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="patient-info">
+        <p><strong>Patient Name:</strong> {{patientName}}</p>
+        <p><strong>Patient Email:</strong> {{patientEmail}}</p>
+    </div>
+    <table class="issue-table">
+        <tr>
+            <td><strong>Patient Issue:</strong></td>
+            <td>{{patientIssue}}</td>
+        </tr>
+        <tr>
+            <td><strong>Actual Issue:</strong></td>
+            <td>{{actualIssue}}</td>
+        </tr>
+        <tr>
+            <td><strong>Doctor's Advice:</strong></td>
+            <td>{{doctorAdvice}}</td>
+        </tr>
+    </table>
+    <div class="details">
+        <p><strong>Details:</strong></p>
+        {{details}}
+    </div>
+    <div class="medicines">
+        <p><strong>Medicines and Other Details:</strong></p>
+        {{medicines}}
+    </div>
+</body>
+</html>

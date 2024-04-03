@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            margin: 5px 0;
+            color: #666;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        table th,
+        table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img class="logo" src="https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg" alt="Hospital Logo">
+            <h1>Appointment Details</h1>
+            <p><strong>Hospital Name:</strong> {{hospitalName}}</p>
+            <p><strong>Hospital Location:</strong> {{hospitalLocation}}</p>
+            <p><strong>Hospital Type:</strong> {{hospitalType}}</p>
+            <hr>
+            <p><strong>Doctor's Name:</strong> {{doctorName}}</p>
+            <p><strong>Doctor's Email:</strong> {{doctorEmail}}</p>
+            <p><strong>Specialty:</strong> {{doctorSpecialty}}</p>
+            <hr>
+            <p><strong>Patient Name:</strong> {{patientName}}</p>
+            <p><strong>Patient Email:</strong> {{patientEmail}}</p>
+            <hr>
+            <table>
+                <tr>
+                    <th>Patient Issue:</th>
+                    <td>{{patientIssue}}</td>
+                </tr>
+                <tr>
+                    <th>Actual Issue:</th>
+                    <td>{{actualIssue}}</td>
+                </tr>
+                <tr>
+                    <th>Doctor's Advice:</th>
+                    <td>{{doctorAdvice}}</td>
+                </tr>
+            </table>
+            <hr>
+            <div class="details">
+                <p><strong>Details:</strong></p>
+                <p>{{details}}</p>
+            </div>
+            <div class="medicines">
+                <p><strong>Medicines and Other Details:</strong></p>
+                <p>{{medicines}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

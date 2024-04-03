@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FaUser, FaEnvelope, FaCalendar, FaStethoscope, FaEdit, FaCheck, FaPrescriptionBottleAlt, FaFileSignature } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaCalendar, FaEdit, FaCheck, FaPrescriptionBottleAlt, FaFileSignature } from 'react-icons/fa';
 import customFetch from '../utils/customFetch';
 import { Form, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -123,7 +123,7 @@ const AppointmentForm = () => {
   const { user } = useDashboardContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [data, setData] = useState([]);
-  const [finish, setFinish] = useState(false);
+  const [ setFinish] = useState(false);
   const navigate = useNavigate();
 
   const getData = async () => {
@@ -153,6 +153,7 @@ const AppointmentForm = () => {
       doctorSignatureDate: '',
     });
   };
+  console.log(data)
 
   useEffect(() => {
     getData();
@@ -161,8 +162,9 @@ const AppointmentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     if (data.length<=1) {
-      const response = await customFetch.patch(`/bookings/generate-report/${formData._id}`, formData).finally(()=>  setIsSubmitting(false));
+      await customFetch.patch(`/bookings/generate-report/${formData._id}`, formData).finally(()=>  setIsSubmitting(false));
       toast.success("Completed Today's Session.");
       navigate("/dashboard/daily-sessions");
       
@@ -289,7 +291,7 @@ const AppointmentForm = () => {
   
 
   if (!data[0]) {
-    return <h1>You don't have remaining Sessions.</h1>;
+    return <h1>You don&apos;t have remaining Sessions.</h1>;
   }
 
   return (
@@ -392,7 +394,7 @@ const AppointmentForm = () => {
               <Icon>
                 <FaEnvelope />
               </Icon>
-              Doctor's Email:
+              Doctor&apos;s Email:
             </Label>
             <Input
               type="email"
@@ -426,7 +428,8 @@ const AppointmentForm = () => {
             </Label>
             <TextArea
               name="symptoms"
-              value={data[0].booking.issueDescription}
+              defaultValue={data[0].booking.issueDescription}
+              value={formData.symptoms}
               onChange={handleChange}
             />
           </FormGroup>
@@ -508,7 +511,7 @@ const AppointmentForm = () => {
               <Icon style={{ marginTop: "20px" }}>
                 <FaFileSignature />
               </Icon>
-              Doctor's Signature Date:
+              Doctor&apos;s Signature Date:
             </Label>
             <Input
               type="date"

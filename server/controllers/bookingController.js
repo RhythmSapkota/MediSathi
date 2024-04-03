@@ -120,6 +120,7 @@ export const getAllBookings = async (req, res) => {
 
   
   export const getAllDoctorsBookings = async (req, res) => {
+    console.log(req.user)
     if (req.user.role !== 'doctor') throw new UnauthorizedError("Unauthorized to access");
 
     // if (!req.body) {

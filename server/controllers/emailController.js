@@ -6,7 +6,7 @@ import { getPasswordResetEmailTemplate } from '../templates/resetPasswordTemplat
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
-export const sendEmail = async (toEmail, dynamicTemplateId, templateData, pdfFilePath) => {
+export const sendEmail = async (toEmail, dynamicTemplateId, templateData, base64Data) => {
   const msg = {
     to: toEmail,
     from: {
@@ -18,10 +18,10 @@ export const sendEmail = async (toEmail, dynamicTemplateId, templateData, pdfFil
   };
 
   // Check if pdfFilePath is provided, and if so, add the attachment.
-  if (pdfFilePath) {
+  if (base64Data) {
     msg.attachments = [
       {
-        content: fs.readFileSync(pdfFilePath).toString('base64'), // Read the PDF file and encode it
+        content: base64Data, 
         filename: 'medical_report.pdf', // Set the desired filename for the attachment
         type: 'application/pdf', // Set the correct content type
         disposition: 'attachment', // Specify as an attachment
@@ -30,7 +30,7 @@ export const sendEmail = async (toEmail, dynamicTemplateId, templateData, pdfFil
   }
 
   try {
-    const result = await sgMail.send(msg);
+    await sgMail.send(msg);
     console.log('Email sent successfully', msg.to);
   } catch (error) {
     console.error('Error sending email:', error);

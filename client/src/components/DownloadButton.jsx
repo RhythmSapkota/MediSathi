@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import customFetch from '../utils/customFetch';
-import { toast } from 'react-toastify';
+/* eslint-disable react/prop-types */
 
-// Define your styled button component
+import styled from "styled-components";
+import customFetch from "../utils/customFetch";
+import { toast } from "react-toastify";
+import { generatePdf, getFileNameFromResponse } from "../utils/manupulateFileResponse";
 const StyledButton = styled.button`
   background-color: #007bff; /* Blue color for the button */
   color: white;
@@ -19,51 +19,33 @@ const StyledButton = styled.button`
   }
 `;
 
-const DownloadButton = ({bookingId}) => {
-    const handleClick = async (e) => {
-        e.preventDefault();
-        console.log("here");
-        try {
-            const response = await customFetch.get(`/booking/pdf/${bookingId}`);
+const DownloadButton = ({ bookingId }) => {
+  const handleClick = async (e) => {
+    e.preventDefault();
+    console.log("here");
+    try {
+      const response = await customFetch.get(`/booking/pdf/${bookingId}`);
+      if (!response || !response.data) {
+        // Handle the case where the response is missing or empty
+        console.error("Error downloading PDF. Response:", response);
+        toast.error("Download failed");
+        return;
+      }
+      const base64 = response?.data.data;
+      const fileName = getFileNameFromResponse(response);
+      console.log(fileName);
+      generatePdf(base64, fileName);
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+      toast.error("Download failed");
+    }
+  };
 
-            if (!response || !response.data) {
-                // Handle the case where the response is missing or empty
-                console.error('Error downloading PDF. Response:', response);
-                toast.error("Download failed");
-                return;
-            }
-
-            // Convert the response data to a blob
-             // Create a blob from the PDF data
-    const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-    console.log('PDF Data Length:', response.data.length);
-    console.log('PDF Data:', response.data.slice(0, 100)); // Log the first 100 bytes as an example
-
-
-    // Create a temporary URL for the blob
-    const url = window.URL.createObjectURL(pdfBlob);
-
-    // Create a temporary link element to trigger the download
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Your_Report.pdf'; // Set the desired filename
-    document.body.appendChild(a);
-    a.click();
-
-    // Clean up by revoking the blob URL
-    window.URL.revokeObjectURL(url);
-
-            toast.success("Download completed");
-        } catch (error) {
-            console.error('Error downloading PDF:', error);
-            toast.error("Download failed");
-        }
-    };
-      
-      
   return (
     <div>
-      <StyledButton type='button' onClick={handleClick}>Download PDF</StyledButton>
+      <StyledButton type="button" onClick={handleClick}>
+        Download PDF
+      </StyledButton>
     </div>
   );
 };

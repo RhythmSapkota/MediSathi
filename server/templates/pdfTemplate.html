@@ -1,54 +1,106 @@
-<!-- server/templates/appointment-template.html -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Appointment Details</title>
-    <!-- Include Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Include custom styles -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Report</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: rgb(245, 245, 245);
+        padding: 20px;
+        border-radius: 10px;
+        /* background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); */
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/medi-sathi.appspot.com/o/output-onlinejpgtools%20(2).png?alt=media&token=265bb488-48ec-4f34-9880-b936413a1878");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .section {
+        margin-bottom: 20px;
+    }
+    .section h2 {
+        color: #666;
+    }
+    .details {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .detail-label {
+        font-weight: bold;
+    }
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        color: #888;
+    }
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="hospital-info">
-            <img src="https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg" alt="Hospital Logo" height="200px" width="300px">
-            <h2>{{hospitalName}}</h2>
-            <p>{{hospitalLocation}}</p>
-            <p>{{hospitalType}}</p>
+<div class="container">
+       <div style="text-align: right;"> <h4>Date of Appointment: {{appointmentDate}}</h4></div>
+    <h1>Medical Report</h1>
+    <div class="section">
+        <h2>Hospital Information</h2>
+        <div class="details">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="vertical-align: top; padding-right: 20px;">
+                        <p><span class="detail-label">Hospital Name:</span> {{ hospitalName }}</p>
+                        <p><span class="detail-label">Hospital Type:</span> {{ hospitalType }}</p>
+                        <p><span class="detail-label">Hospital Location:</span> {{ hospitalLocation }}</p>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <div style="text-align: right;"><img src="https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg" alt="Hospital Logo" width="110px" height="auto"/></div>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="doctor-info">
-            <p><strong>Doctor's Name:</strong> {{doctorName}}</p>
-            <p><strong>Doctor's Email:</strong> {{doctorEmail}}</p>
-            <p><strong>Specialty:</strong> {{doctorSpecialty}}</p>
+        
+    </div>
+    
+    <div class="section">
+        <h2>Doctor Information</h2>
+        <div class="details">
+            <p><span class="detail-label">Doctor Name:</span> {{ doctorName }}</p>
+            <p><span class="detail-label">Doctor Email:</span> {{ doctorEmail }}</p>
         </div>
     </div>
-    <hr>
-    <div class="patient-info">
-        <p><strong>Patient Name:</strong> {{patientName}}</p>
-        <p><strong>Patient Email:</strong> {{patientEmail}}</p>
+    
+    <div class="section">
+        <h2>Patient Information</h2>
+        <div class="details">
+            <p><span class="detail-label">Patient Name:</span> {{ patientName }}</p>
+            <p><span class="detail-label">Patient Email:</span> {{ patientEmail }}</p>
+        </div>
     </div>
-    <table class="issue-table">
-        <tr>
-            <td><strong>Patient Issue:</strong></td>
-            <td>{{patientIssue}}</td>
-        </tr>
-        <tr>
-            <td><strong>Actual Issue:</strong></td>
-            <td>{{actualIssue}}</td>
-        </tr>
-        <tr>
-            <td><strong>Doctor's Advice:</strong></td>
-            <td>{{doctorAdvice}}</td>
-        </tr>
-    </table>
-    <div class="details">
-        <p><strong>Details:</strong></p>
-        {{details}}
+    
+    <div class="section">
+        <h2>Medical Details</h2>
+        <div class="details">
+            <p><span class="detail-label">Patient Issue:</span> {{ symptoms }}</p>
+            <p><span class="detail-label">Actual Issue:</span> {{ actualIssue }}</p>
+            <p><span class="detail-label">Doctor Advice:</span> {{ doctorAdvice }}</p>
+            <p><span class="detail-label">Details:</span> {{ details }}</p>
+            <p><span class="detail-label">Medicines:</span> {{ medicines }}</p>
+        </div>
     </div>
-    <div class="medicines">
-        <p><strong>Medicines and Other Details:</strong></p>
-        {{medicines}}
+    <div style="text-align: right;"><p><span class="detail-label">Doctor's Signature Date :</span> {{ doctorSignatureDate }}</p></div>
+    <div class="footer">
+        <p>This report is exclusively generated by MediSathi and can be validated by MediSathi.co</p>
     </div>
+</div>
 </body>
 </html>

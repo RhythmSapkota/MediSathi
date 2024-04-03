@@ -25,11 +25,7 @@ const bookingSchema = new Schema({
     default: APPLICATION_STATUS.PENDING
 },
 applicantNumber:Number,
-report: {
-  data: Buffer, 
-  contentType: String, 
-  uniqueName: String, 
-}
+report: String
 });
 
 export default model('Booking', bookingSchema);
