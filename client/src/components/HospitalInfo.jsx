@@ -9,8 +9,8 @@ const {doctors,date,hospitalType} = text;
 
 
   return (<Wrapper>
-      <span className='job-icon'>{icon}</span>
-      <span className='job-text'>{hospitalType}</span> 
+      <span className='job-icon' style={{marginTop:"1rem"}}>{icon}</span>
+      <span className='job-text' style={{marginTop:"1rem"}}>{hospitalType}</span> 
 
     </Wrapper>
    

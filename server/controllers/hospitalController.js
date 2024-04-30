@@ -4,12 +4,12 @@ import { StatusCodes } from "http-status-codes";
 
 
 export const getAllHospitals = async (req, res) => {
-  console.log(req.user)
+const queries = req.query
   try {
-    const hospitalsWithRatings = await Hospital.find()
-      .populate('ratings')
-      .exec();
-
+    const hospitalsWithRatings = await (queries?.location
+      ? Hospital.find({ hospitalLocation: queries.location }).populate('ratings').exec()
+      : Hospital.find().populate('ratings').exec());
+  
     const hospitalsData = hospitalsWithRatings.map((hospital) => ({
       _id: hospital._id,
       hospital: hospital.hospital,
@@ -20,7 +20,7 @@ export const getAllHospitals = async (req, res) => {
       createdAt:hospital.createdAt,
       updatedAt:hospital.updatedAt,
       ratings:hospital.ratings,
-      averageRating: calculateAverageRating(hospital.ratings), // Calculate average rating
+      averageRating: calculateAverageRating(hospital.ratings),
     }));
 
     res.status(StatusCodes.OK).json({ hospitals: hospitalsData });
@@ -42,7 +42,6 @@ function calculateAverageRating(ratings) {
 
 
 export const addHospital = async (req, res) => {
-  console.log(req.user, "sadasd")
   req.body.createdBy = req.user.userId;
  if (req.user.role === "admin"){
   try {

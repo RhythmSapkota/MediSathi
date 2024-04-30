@@ -6,9 +6,8 @@ const Wrapper = styled.article`
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
-  max-width:600px;
   header {
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem;
     border-bottom: 1px solid var(--grey-100);
     display: grid;
     grid-template-columns: auto 1fr;
@@ -35,6 +34,14 @@ const Wrapper = styled.article`
     display: inline-block;
     margin-top:10px;
     direction: rtl; /* Reverse direction */
+
+    .rating-indo-inside{
+      display: inline;
+      @media (max-width: 480px) {
+        display:none 
+       }
+    }
+
   }
   
   .star {
@@ -67,6 +74,9 @@ const Wrapper = styled.article`
   .rating-info {
     margin-bottom: 5px;
     font-weight: bold;
+    @media (min-width: 576px) {
+     display:none 
+    }
   }
   
   
@@ -119,6 +129,7 @@ const Wrapper = styled.article`
   .edit-btn {
     margin-right: 0.5rem;
   }
+
 `;
 
 export default Wrapper;

@@ -25,6 +25,7 @@ import { loader as resetLoader } from "./pages/resetPassword";
 import { action as resetAction } from "./pages/resetPassword";
 import { action as forgotPasswordAction } from "./pages/forgotPassword";
 import { action as registerAction } from "./pages/Register";
+import { action as setAction } from "./pages/ChangePassword";
 import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { action as addHospitalAction } from "./pages/AddHospital";
@@ -34,9 +35,11 @@ import { action as bookingAction } from "./pages/Booking";
 import { loader as myBookingsLoader } from "./pages/MyBookings";
 import { loader as doctorDailySessionLoader } from "./pages/DoctorDailySession";
 import {loader as manageUsersLoader} from "./pages/ManageUsers";
+import {loader as statsLoader} from "./pages/Stats";
 import {loader as manageHospitalsLoader} from "./pages/ManageHospitals"
 import ResetPasswordForm from "./pages/resetPassword";
 import ForgotPassword from "./pages/forgotPassword";
+import SetPasswordPage from "./pages/ChangePassword";
 
 
 
@@ -64,6 +67,11 @@ const router = createBrowserRouter([
         loader: resetLoader
       },
       {
+        path: "/set-password/:token",
+        element: <SetPasswordPage />,
+        action: setAction,
+      },
+      {
         path: "register",
         element: <Register />,
         action: registerAction,
@@ -87,6 +95,7 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
+            loader: statsLoader
           },
           {
             path: "daily-sessions",

@@ -22,9 +22,9 @@ export const sendEmail = async (toEmail, dynamicTemplateId, templateData, base64
     msg.attachments = [
       {
         content: base64Data, 
-        filename: 'medical_report.pdf', // Set the desired filename for the attachment
-        type: 'application/pdf', // Set the correct content type
-        disposition: 'attachment', // Specify as an attachment
+        filename: 'medical_report.pdf',
+        type: 'application/pdf', 
+        disposition: 'attachment',
       },
     ];
   }

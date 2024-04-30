@@ -677,3 +677,12 @@ ul {
   background: #ffeeee;
   color: #d66a6a;
 }
+.apexcharts-menu{
+  background-color: #27293d!important;
+  color: #ffeeee;
+  border: 0px;
+  }
+
+  .apexcharts-menu:hover{
+    color: #27293d;
+  }

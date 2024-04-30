@@ -91,7 +91,7 @@ console.log(message)
   return (
     <div className="rating">
       {/* <div className="rating-info">{message}</div> */}
-    {message.length > 0 ? <p style={{display:"inline", marginLeft:"4px",marginBottom:"10px"}}> {message} </p>  : <p style={{display:"inline", marginLeft:"4px",marginBottom:"10px"}}> {`(${totalRating} reviews)`} </p> } {stars}
+    {message.length > 0 ? <p className='rating-indo-inside' style={{ marginLeft:"4px",marginBottom:"10px"}}> {message} </p>  : <p className='rating-indo-inside' style={{ marginLeft:"4px",marginBottom:"10px"}}> {`(${totalRating} reviews)`} </p> } {stars}
     </div>
   );
 };

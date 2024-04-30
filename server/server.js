@@ -10,6 +10,7 @@ import authRouter from "./Routes/authRouter.js";
 import userRouter from "./Routes/userRouter.js";
 import doctorRouter from "./Routes/doctorRouter.js";
 import bookingRouter from "./Routes/bookingRoute.js";
+import statsRouter from "./Routes/statsRoute.js"
 import absentRoutes from "./Routes/absentRoute.js";
 import pdfRoutes from "./Routes/pdfRoute.js";
 import path from "path";
@@ -49,6 +50,7 @@ app.use("/api/v1/doctors", authenticateUser, doctorRouter);
 app.use("/api/v1/hospitals", authenticateUser, hospitalRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/stats", authenticateUser, statsRouter)
 
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "Not Found" });

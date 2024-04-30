@@ -6,7 +6,7 @@ import forbidden from '../assets/images/forbidden.png'
 
 const Error = () => {
   const error = useRouteError();
-console.log(error)
+  console.log(error)
   if (error?.status === 404){
  
  return   <Wrapper>
@@ -19,7 +19,7 @@ console.log(error)
     </Wrapper>
   } 
 
-  if (error?.response.status === 403){
+  if (error?.response?.status === 403){
  
     return   <Wrapper>
          <div>
@@ -31,7 +31,7 @@ console.log(error)
        </Wrapper>
      } 
 
-     if (error?.response.status === 401){
+     if (error?.response?.status === 401){
  
       return   <Wrapper>
            <div>

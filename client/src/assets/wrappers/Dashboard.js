@@ -6,6 +6,7 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr;
   }
   .dashboard-page {
+    display:block;
     width: 90vw;
     margin: 0 auto;
     padding: 2rem 0;
@@ -26,7 +27,6 @@ const Wrapper = styled.section`
       grid-template-columns: auto 1fr;
     }
     .dashboard-page {
-      display: flex;
       align-items: center;
       justify-content: center;
       width: 90%;

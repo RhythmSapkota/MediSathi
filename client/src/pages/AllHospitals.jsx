@@ -8,10 +8,10 @@ export const loader = async () =>{
  try {
   const data = await customFetch.get('/hospitals')
 
-  return {data:data.data};
+  return {data:data?.data};
  } catch (error) {
-  const errorMsg = await error.response.data.msg;
-  toast.error(errorMsg);
+  // const errorMsg = await error?.response?.data?.msg;
+  // toast.error(errorMsg);
  }
 }
 

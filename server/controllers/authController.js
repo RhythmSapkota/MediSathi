@@ -19,7 +19,7 @@ export const register = async (req, res) => {
   const hashedPassword = await hashPassword(req.body.password);
   req.body.password = hashedPassword;
 
-  const user = await User.create(req.body);
+  const user = await User.create({...req.body, hasLogged:true});
   res.status(StatusCodes.CREATED).json({ msg: "User Created" });
 };
 
@@ -29,20 +29,32 @@ export const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
 
   const isValidUser =
-    user && (await comparePassword(req.body.password, user.password));
-
+  user && (await comparePassword(req.body.password, user.password));
+  
   if (!isValidUser) throw new UnauthenticatedError("invalid Credentials");
+  const hasUserLogged = user?.hasLogged;
 
+  user?.updateOne({hasLogged: true});
+  
   const token = createJWT({ userId: user._id, role: user.role });
 
+
+  const token2 = !hasUserLogged? crypto.randomBytes(20).toString('hex'): undefined;
+ if (token2){ user.resetPasswordToken = token2;
+  user.resetPasswordExpires = Date.now() + 3600000;
+  user.hasLogged = true // 1 hour
+  await user.save();
+}
   const oneDay = 1000 * 60 * 60 * 24;
+
+  console.log(token2)
 
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
     secure: process.env.NODE_ENV === "production",
   });
-  res.status(StatusCodes.OK).json({ msg: "user Logged In" });
+  res.status(StatusCodes.OK).json({ msg: "user Logged In", hasLogged: hasUserLogged, token:token2  });
 };
 
 export const logout = (req, res) => {

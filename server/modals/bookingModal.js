@@ -26,6 +26,6 @@ const bookingSchema = new Schema({
 },
 applicantNumber:Number,
 report: String
-});
+},{ timestamps: true });
 
 export default model('Booking', bookingSchema);

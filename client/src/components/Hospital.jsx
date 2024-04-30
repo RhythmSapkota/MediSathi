@@ -62,35 +62,32 @@ const Hospital = ({
 
   return (
     <Wrapper>
-      <header>
+       <div style={{display:"flex", justifyContent:"space-between", padding:"2rem 3rem 0 2rem"}}> <h5>{hospital}</h5>
+          <span>
+         <ScoreCard rating = {rating}/>
+        </span></div>
+      {/* <header> */}
+        <div style={{display:"flex",justifyContent:"space-between", padding:"0.5rem 1rem 2rem 2rem"}}>
         <div className="info">
-          <h5>{hospital}</h5>
-          <p>{hospitalLocation}</p>
+          <p style={{fontSize:"18px"}}>{hospitalLocation}</p>
           <Rating rating={rating} totalRating={totalRating} onUpdateRating={handleRatingUpdate} />
 
-          <div className='content'>
+          {/* <div className='content'> */}
             <div className='content-center'>
               <HospitalInfo icon={<FaLocationArrow />} text={data} />
             </div>
             
-            <button type='button' className='btn job-btn' onClick={handleView}>View Doctors</button>
-            <footer className='actions'>
-              <Link className='btn edit-btn'>Edit</Link>
-              <Form>
-                <button type="submit" className='btn delete-btn'>Delete</button>
-              </Form>
-            </footer>
-          </div>
+            <button type='button' style={{padding:"1rem"}} className='btn job-btn' onClick={handleView}>View Doctors</button>
+
+          {/* </div> */}
      
         </div>
       
-        <div className="profile-image">
-        <span>
-         <ScoreCard rating = {rating}/>
-        </span>
-          <img src={"https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg"} alt="Hospital" />
+        <div style={{borderRadius:"30%"}}>
+          <img src={"https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg"} alt="Hospital" width={150} height={"auto"}  style={{borderRadius:"35%"}}/>
         </div>
-      </header>
+        </div>
+      {/* </header> */}
       
     </Wrapper>
   )

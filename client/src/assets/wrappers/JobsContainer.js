@@ -34,7 +34,7 @@ const Wrapper = styled.section`
   .hospital-name{
     margin-bottom:30px;
   }
-  @media (min-width: 1120px) {
+  @media (min-width: 1220px) {
     .jobs {
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
