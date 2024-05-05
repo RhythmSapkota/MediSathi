@@ -7,6 +7,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0 0.5rem;
+    @media screen and (max-width: 768px) {
+      display: none;
+  }
   }
   .img {
     width: 25px;
